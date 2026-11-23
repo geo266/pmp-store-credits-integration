@@ -2,9 +2,21 @@
 
 A WordPress plugin that issues recurring store credit to **Paid Memberships Pro** members and lets them redeem it at **WooCommerce** checkout.
 
-Built for a live membership store where neither PMPro nor WooCommerce offered a native "monthly credit tied to the billing cycle" primitive, and where off-the-shelf loyalty plugins broke inside a Breakdance checkout template.
-
 > **Status: reference implementation / handover snapshot.** This is the single-file plugin as it ran in production, published for documentation and as a starting point for the refactor described in [HANDOVER.md](HANDOVER.md). It is *not* a polished public plugin: the [known issues](#known-issues) below are real and include one high-severity bug. Read them before deploying.
+
+---
+
+## Why this exists
+
+From the original handover — full text in [HANDOVER.md](HANDOVER.md) §2:
+
+* **Reward recurring membership automatically.** A paying member should get immediate, tangible value on every renewal, without an administrator touching the account.
+* **Control rollover and expiry.** Unused credit may carry over for a defined grace period and then expire — enough to keep members engaged and buying, not so much that the store carries indefinite liability on its balance sheet.
+* **Stay lightweight.** Bridge PMPro and WooCommerce natively rather than install a heavy, expensive loyalty/points plugin that fights the site's architecture.
+
+It was written because nothing off the shelf did this: neither PMPro nor WooCommerce could issue recurring credit tied to a billing cycle with custom rollover caps and time-based expiry; commercial credit plugins broke inside Breakdance's custom checkout templates or collided with its theme; and running WooCommerce `11.x` alongside stale add-ons produced fatal function mismatches and schema conflicts.
+
+The rollover half of that intent is **not** in the shipped code — it resets the balance each cycle instead of carrying unused credit forward. See [known issues](#known-issues) #2.
 
 ---
 
