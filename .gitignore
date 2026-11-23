@@ -1,0 +1,40 @@
+# OS / editor noise
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Dependencies
+vendor/
+node_modules/
+composer.lock
+package-lock.json
+
+# Environment and secrets
+.env
+.env.*
+*.pem
+*.key
+auth.json
+
+# Logs and dumps
+*.log
+debug.log
+error_log
+*.sql
+*.sql.gz
+*.zip
+*.tar.gz
+
+# Build / test output
+phpunit.xml
+.phpunit.result.cache
+coverage/
+build/
+dist/
